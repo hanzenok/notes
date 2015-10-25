@@ -1,4 +1,4 @@
-package org.ganza.notes;
+package org.ganza.note;
 
 import android.appwidget.AppWidgetProvider;
 

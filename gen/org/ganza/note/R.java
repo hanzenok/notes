@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package org.ganza.notes;
+package org.ganza.note;
 
 public final class R {
     public static final class attr {
