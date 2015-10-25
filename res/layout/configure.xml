@@ -5,7 +5,7 @@
 
     <EditText
         android:id="@+id/editText1"
-        android:hint="Add note"
+        android:hint="@string/hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
@@ -21,6 +21,6 @@
         android:layout_below="@+id/editText1"
         android:layout_margin="5dp"
         android:gravity="center_vertical|center_horizontal"
-        android:text="Stick it!" />
+        android:text="@string/button_label"/>
 
 </RelativeLayout>
