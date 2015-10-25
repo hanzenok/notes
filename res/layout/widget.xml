@@ -5,12 +5,16 @@
 	android:background="@drawable/sticky_note"
 	android:layout_height="86dp">
 
-	<TextView android:id="@+id/widget_textview"
-		android:text="@string/note"
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:layout_gravity="center_horizontal|center"
-		android:layout_marginTop="5dip"
-		android:padding="10dip"
-		android:textColor="@android:color/black"/>
+	<TextView
+	    android:id="@+id/widget_textview"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_centerVertical="true"
+	    android:layout_marginTop="5dip"
+	    android:padding="10dip"
+	    android:text="@string/note"
+	    android:textColor="@android:color/black"
+	    android:textStyle="bold" />
+
 </RelativeLayout>
