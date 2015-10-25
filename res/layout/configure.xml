@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
 
-    <EditText
-        android:id="@+id/editText1"
-        android:hint="@string/hint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:lines="3"
-        android:layout_margin="5dp">
-        <requestFocus />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" >
+
+	<EditText
+		android:id="@+id/editText1"
+		android:hint="@string/hint"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="top"
+		android:lines="3"
+		android:layout_margin="5dp">
+		<requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="fill_parent"
-        android:layout_height="75dp"
-        android:layout_below="@+id/editText1"
-        android:layout_margin="5dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="@string/button_label"/>
+	<Button
+		android:id="@+id/button1"
+		android:layout_width="fill_parent"
+		android:layout_height="75dp"
+		android:layout_below="@+id/editText1"
+		android:layout_margin="5dp"
+		android:gravity="center_vertical|center_horizontal"
+		android:text="@string/button_label"/>
 
 </RelativeLayout>
