@@ -46,6 +46,7 @@ public class Configure extends Activity {
 					Intent resultValue = new Intent();
 					resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetID);
 					setResult(RESULT_OK, resultValue);
+					
 					finish();
 				}
 			});
