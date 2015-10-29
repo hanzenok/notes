@@ -12,8 +12,13 @@ import android.widget.RemoteViews;
 
 public class Configure extends Activity {
 	
-	private Configure context;
 	private int widgetID;
+	
+	private AppWidgetManager widgetManager;
+	private RemoteViews views;
+	
+	private EditText editText;
+	private Button button;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -22,24 +27,22 @@ public class Configure extends Activity {
 		setContentView(R.layout.configure);
 		setResult(RESULT_CANCELED);
 		
-		context = this;
-		
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			
 			widgetID = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
 			
-			final AppWidgetManager widgetManager = AppWidgetManager.getInstance(context);
-			final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
+			widgetManager = AppWidgetManager.getInstance(this);
+			views = new RemoteViews(this.getPackageName(), R.layout.widget);
 			
-			final EditText et = (EditText) findViewById(R.id.editText1);
-			Button b = (Button) findViewById(R.id.button1);
-			b.setOnClickListener(new OnClickListener(){
+			editText = (EditText) findViewById(R.id.editText1);
+			button = (Button) findViewById(R.id.button1);
+			button.setOnClickListener(new OnClickListener(){
 				
 				@Override
 				public void onClick(View v){
 					
-					views.setTextViewText(R.id.widget_textview, et.getText().toString());
+					views.setTextViewText(R.id.widget_textview, editText.getText().toString());
 					
 					widgetManager.updateAppWidget(widgetID, views);
 					
