@@ -1,5 +1,6 @@
 package org.ganza.note;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -10,7 +11,7 @@ public class NotesDBHandler extends SQLiteOpenHelper{
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "notes.db";
 	private static final String TABLE_NAME = "notes";
-	private static final String COLUMN_WIDGETID = "_widgetid";
+	private static final String COLUMN_ID = "_id";
 	private static final String COLUMN_TEXT = "text";
 	
 	public NotesDBHandler(Context context, String name, CursorFactory factory, int version) {
@@ -22,7 +23,7 @@ public class NotesDBHandler extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		
 		String query = "CREATE TABLE " + TABLE_NAME + "(" +
-				COLUMN_WIDGETID + " INTEGER PRIMARY KEY " +
+				COLUMN_ID + " INTEGER PRIMARY KEY " +
 				COLUMN_TEXT + " TEXT " +
 				");";
 		
@@ -34,6 +35,27 @@ public class NotesDBHandler extends SQLiteOpenHelper{
 		
 		db.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME);
 		onCreate(db);
+	}
+	
+	public void addNote(Note note){
+		
+		SQLiteDatabase db = getWritableDatabase();
+		
+		ContentValues values = new ContentValues();
+		values.put(COLUMN_ID, note.getId());
+		values.put(COLUMN_TEXT, note.getText());
+		
+		db.insert(TABLE_NAME, null, values);
+		db.close();
+	}
+	
+	public void deleteNote(Note note){
+		
+		SQLiteDatabase db = getWritableDatabase();
+		
+		db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + 
+				"=\"" + note.getId() + "\";");
+		
 	}
 
 }

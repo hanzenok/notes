@@ -2,34 +2,34 @@ package org.ganza.note;
 
 public class Note {
 	
-	private int _widgetid;
+	private int _id;
 	private String _text;
 	
 	public Note(){
 	}
 	
-	public Note(int widgetid, String text){
+	public Note(int id, String text){
 		
 		_text = text;
-		_widgetid = widgetid;
+		_id = id;
 	}
 	
-	public void set_widgetid(int widgetid){
+	public void setId(int id){
 		
-		_widgetid = widgetid;
+		_id = id;
 	}
 	
-	public void set_text(String text){
+	public void seText(String text){
 		
 		_text = text;
 	}
 	
-	public int get_widgetid(){
+	public int getId(){
 		
-		return _widgetid;
+		return _id;
 	}
 	
-	public String get_text(){
+	public String getText(){
 		
 		return _text;
 	}
