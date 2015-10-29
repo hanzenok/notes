@@ -2,6 +2,7 @@ package org.ganza.note;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -35,6 +36,7 @@ public class NotesDBHandler extends SQLiteOpenHelper{
 		
 		db.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME);
 		onCreate(db);
+		db.close();
 	}
 	
 	public void addNote(Note note){
@@ -57,5 +59,26 @@ public class NotesDBHandler extends SQLiteOpenHelper{
 				"=\"" + note.getId() + "\";");
 		
 	}
-
+	
+	public Note getNote(int id){
+		
+		SQLiteDatabase db = getWritableDatabase();
+		String query = "SELECT FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + "=\"" + id + "\";";
+		Cursor c = db.rawQuery(query, null);
+		c.moveToFirst();
+		
+		Note note = new Note();
+		
+		String text = c.getString(c.getColumnIndex(COLUMN_TEXT));
+		if(text != null){
+			
+			note.setText(text);
+		}
+		
+		note.setId(id);
+		c.close();
+		db.close();
+		
+		return note;
+	}
 }

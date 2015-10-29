@@ -6,6 +6,9 @@ public class Note {
 	private String _text;
 	
 	public Note(){
+		
+		_id = -1;
+		_text = "";
 	}
 	
 	public Note(int id, String text){
@@ -19,7 +22,7 @@ public class Note {
 		_id = id;
 	}
 	
-	public void seText(String text){
+	public void setText(String text){
 		
 		_text = text;
 	}
