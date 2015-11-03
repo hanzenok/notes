@@ -1,5 +1,8 @@
 package org.ganza.note;
 
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdView;
+
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
@@ -12,26 +15,36 @@ import android.widget.RemoteViews;
 
 public class Configure extends Activity {
 	
-	private int widgetID;
+	private int widgetId;
 	
 	private AppWidgetManager widgetManager;
 	private RemoteViews views;
 	
 	private EditText editText;
 	private Button button;
+	
+	private NotesDBHandler dbHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.configure);
+		
+//		AdView mAdView = (AdView) findViewById(R.id.adView);
+//		AdRequest adRequest = new AdRequest.Builder()
+//		    .addTestDevice("YOUR_DEVICE_HASH")
+//		    .build();
+//		mAdView.loadAd(adRequest);
+		
 		setResult(RESULT_CANCELED);
+		dbHandler = new NotesDBHandler(this, null, null, 0);
 		
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			
-			widgetID = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
-			
+			widgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+			System.out.println("(Configure.java)widget ID: " + widgetId);
 			widgetManager = AppWidgetManager.getInstance(this);
 			views = new RemoteViews(this.getPackageName(), R.layout.widget);
 			
@@ -42,12 +55,15 @@ public class Configure extends Activity {
 				@Override
 				public void onClick(View v){
 					
-					views.setTextViewText(R.id.widget_textview, editText.getText().toString());
+					Note note = new Note(widgetId, editText.getText().toString());
+					dbHandler.addNote(note);
 					
-					widgetManager.updateAppWidget(widgetID, views);
+					views.setTextViewText(R.id.widget_textview, note.getText());
+					
+					widgetManager.updateAppWidget(widgetId, views);
 					
 					Intent resultValue = new Intent();
-					resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetID);
+					resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
 					setResult(RESULT_OK, resultValue);
 					
 					finish();

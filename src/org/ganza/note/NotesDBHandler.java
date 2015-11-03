@@ -24,7 +24,7 @@ public class NotesDBHandler extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		
 		String query = "CREATE TABLE " + TABLE_NAME + "(" +
-				COLUMN_ID + " INTEGER PRIMARY KEY " +
+				COLUMN_ID + " INTEGER PRIMARY KEY, " +
 				COLUMN_TEXT + " TEXT " +
 				");";
 		
@@ -51,28 +51,26 @@ public class NotesDBHandler extends SQLiteOpenHelper{
 		db.close();
 	}
 	
-	public void deleteNote(Note note){
+	public void deleteNote(int id){
 		
 		SQLiteDatabase db = getWritableDatabase();
 		
 		db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + 
-				"=\"" + note.getId() + "\";");
+				"=\"" + id + "\";");
 		
 	}
 	
 	public Note getNote(int id){
 		
-		SQLiteDatabase db = getWritableDatabase();
-		String query = "SELECT FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + "=\"" + id + "\";";
+		SQLiteDatabase db = getReadableDatabase();
+		String query = "SELECT " + COLUMN_TEXT + " FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + "=\"" + id + "\";";
 		Cursor c = db.rawQuery(query, null);
-		c.moveToFirst();
 		
 		Note note = new Note();
 		
-		String text = c.getString(c.getColumnIndex(COLUMN_TEXT));
-		if(text != null){
+		if(c.moveToFirst()){
 			
-			note.setText(text);
+			note.setText(c.getString(c.getColumnIndex(COLUMN_TEXT)));
 		}
 		
 		note.setId(id);
