@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">+Note</string>
-    <string name="note">+Notes</string>
+    <string name="note">Loading..</string>
     <string name="hint">Add note</string>
     <string name="button_label">Stick it!</string>
 
