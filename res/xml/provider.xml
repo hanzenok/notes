@@ -5,4 +5,4 @@
 	android:minHeight="40dp"
 	android:updatePeriodMillis="0"
 	android:initialLayout="@layout/widget"
-	android:configure="org.ganza.note.Configure"/>
+	android:configure="org.ganza.aanotes.Configure"/>

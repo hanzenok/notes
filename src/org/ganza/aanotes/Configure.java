@@ -1,7 +1,5 @@
-package org.ganza.note;
+package org.ganza.aanotes;
 
-//import com.google.android.gms.ads.AdRequest;
-//import com.google.android.gms.ads.AdView;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -38,7 +36,6 @@ public class Configure extends Activity {
 		if(extras != null){
 			
 			widgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
-			System.out.println("(Configure.java)widget ID: " + widgetId);
 			widgetManager = AppWidgetManager.getInstance(this);
 			views = new RemoteViews(this.getPackageName(), R.layout.widget);
 			

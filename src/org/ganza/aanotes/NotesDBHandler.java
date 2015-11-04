@@ -1,4 +1,4 @@
-package org.ganza.note;
+package org.ganza.aanotes;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package org.ganza.note;
+package org.ganza.aanotes;
 
 public class Note {
 	

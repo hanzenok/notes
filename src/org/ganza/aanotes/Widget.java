@@ -1,4 +1,4 @@
-package org.ganza.note;
+package org.ganza.aanotes;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -21,7 +21,6 @@ public class Widget extends AppWidgetProvider {
 		for(i=0; i<n; i++){
 			
 			widgetId = appWidgetIds[i];
-			System.out.println("widget ID: " + widgetId);
 			Note note = dbHandler.getNote(widgetId);
 			
 			views = new RemoteViews(context.getPackageName(), R.layout.widget);
@@ -44,7 +43,6 @@ public class Widget extends AppWidgetProvider {
 			
 			widgetId = appWidgetIds[i];
 			dbHandler.deleteNote(widgetId);
-			System.out.println("(onDeleted)widget ID: " + widgetId);
 		}
 	}
 

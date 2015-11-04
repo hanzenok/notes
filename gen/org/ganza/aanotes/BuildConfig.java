@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package org.ganza.note;
+package org.ganza.aanotes;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;
