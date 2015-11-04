@@ -29,11 +29,9 @@
 	-->
 	<Button
 	    android:id="@+id/button1"
-	    android:layout_width="fill_parent"
-	    android:layout_height="75dp"
+	    android:background="@drawable/red_button"
 	    android:layout_below="@+id/editText1"
-	    android:gravity="center_vertical|center_horizontal"
-	    android:text="@string/button_label"
-	    android:textSize="30sp" />
+	    android:text="@string/button_label" 
+	    style="@style/button_style"/>
 
 </RelativeLayout>
