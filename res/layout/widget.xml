@@ -15,6 +15,6 @@
 	    android:padding="10dip"
 	    android:text="@string/note"
 	    android:textColor="@android:color/black"
-	    android:textStyle="bold" />
+	    android:textStyle="bold"/>
 
 </RelativeLayout>
