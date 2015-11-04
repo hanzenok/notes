@@ -31,12 +31,6 @@ public class Configure extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.configure);
 		
-//		AdView mAdView = (AdView) findViewById(R.id.adView);
-//		AdRequest adRequest = new AdRequest.Builder()
-//		    .addTestDevice("YOUR_DEVICE_HASH")
-//		    .build();
-//		mAdView.loadAd(adRequest);
-		
 		setResult(RESULT_CANCELED);
 		dbHandler = new NotesDBHandler(this, null, null, 0);
 		
